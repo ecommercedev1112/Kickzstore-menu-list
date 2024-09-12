@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-template-section",
+      "settings": {
+        "title": "Parent Collection",
+        "new_product_link": "shopify:\/\/collections\/new-in-grandparent-gifts",
+        "new_product_link_text": "What's New",
+        "all_product_linnk": "shopify:\/\/collections",
+        "all_product_link_text": "Browse All"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

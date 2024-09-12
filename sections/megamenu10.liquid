@@ -1,0 +1,107 @@
+{% if section.blocks.size > 0 %}
+    <diV class="header-megamenu" id="header-megamenu--{{ section.settings.link_title | handleize }}">
+        <div class="header-megamenu--submenu">
+            {% for block in section.blocks %}
+                {% if block.type == 'menu' %}
+                <div class="header-megamenu--submenu-link_list">
+                    {% if block.settings.heading_link != blank %}
+                        <a class="header-megamenu--submenu_title" href="{{ block.settings.heading_link }}">
+                    {% else %}
+                        <p class="header-megamenu--submenu_title">
+                    {% endif %}
+                        {{ block.settings.header }}
+                    {% if block.settings.heading_link != blank %}
+                        </a>
+                    {% else %}
+                        </p>
+                    {% endif %}
+                    <ul class="header-megamenu--submenu-list">
+                        {% for sub_menu in block.settings.sub_menu.links %}
+                            <li class="header-megamenu--submenu_link">
+                                <a href="{{ sub_menu.link }}">{{ sub_menu.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="header-megamenu--featured-promotion">
+            {% for block in section.blocks %}
+                {% if block.type == 'featured_promotion' %}
+                    <div class="header-megamenu--featured-promotion_item">
+                        {% if block.settings.image != blank %}
+                            <div class="header-megamenu--featured-promotion_image">
+                                <a href="{{ block.settings.link }}">
+                                    {{ block.settings.image | img_url: '375x' | img_tag }}
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if block.settings.label != blank %}
+                            <a href="{{ block.settings.link }}" class="btn btn--outline">
+                                {{ block.settings.label }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </diV>
+{% endif %}
+{% schema %}
+{
+    "name": "Mega menu 10",
+    "class": "HeaderMegamenu",
+    "settings": [
+        {
+            "type": "text",
+            "id": "link_title",
+            "label": "Link Title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "menu",
+            "name": "Menu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "header",
+                    "label": "Header"
+                },
+                {
+                    "type": "link_list",
+                    "id": "sub_menu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "url",
+                    "id": "heading_link",
+                    "label": "Heading link"
+                }
+            ]
+        },
+        {
+            "type": "featured_promotion",
+            "name": "Featured Promption",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "Label"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

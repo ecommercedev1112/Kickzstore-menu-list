@@ -1,0 +1,140 @@
+{{ 'section-colleciton-text-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-colleciton-template.css' | asset_url | stylesheet_tag }}
+
+<div class="colleciton-template__wrapper page-width">
+    <div class="collection-text-slider__wrapper page-width">
+        <div class="collection-text-sldier__text-wrapper">
+            {% if section.settings.title != blank %}
+                <h1>{{ section.settings.title }}</h1>
+            {% endif %}
+            {% if collection.metafields.custom.subtitle != blank %}
+                <p>{{ collection.metafields.custom.subtitle }}</p>
+            {% endif %}
+            <div class="collection-text-slider__text__link">
+                {% if section.settings.new_product_link != blank %}
+                    <a href="{{ section.settings.new_product_link }}">{{ section.settings.new_product_link_text }}</a> 
+                {% endif %}
+                {% if section.settings.all_product_linnk != blank %}
+                <a href="{{ section.settings.all_product_linnk }}"> | {{ section.settings.all_product_link_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="collection-text-slider__slider-wrapper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for collection in collection.metafields.custom.sub_collections.value %}
+                        <div class="swiper-slide collection-text-slider__slider__item">
+                            <a href="{{ collection.url }}">
+                                <img src="{{ collection.image | img_url: "130x" }}" alt="collection image" width="{{ collection.image.width }}" height="{{ collection.image.height }}">
+                                <p>{{ collection.title }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-prev closures-arrow">
+                    {% render 'arrow-prev' %}
+                </div>
+                <div class="swiper-button-next closures-arrow">
+                    {% render 'arrow-next' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colleciton-template__image">
+        {% if collection.metafields.custom.collection_banner_image != blank %}
+            <img src="{{ collection.metafields.custom.collection_banner_image | img_url: "master" }}" alt="collection banner image" width="{{ collection.metafields.custom.collection_banner_image.width }}" height="{{ collection.metafields.custom.collection_banner_image.height }}">
+        {% endif %}
+    </div>
+    <div class="collection-template__body">
+        <div class="collection-template__body__nav">
+        </div>
+        <div class="collection-template__body__sub-collection">
+            {% for collection in collection.metafields.custom.sub_collections.value %}
+                <div class="collection-template__sub-collection__text-wrapper">
+                    <div class="sub-collection__text">
+                        <a href="{{ collection.url }}">
+                            <h2>{{ collection.title }}</h2>
+                            <span>({{ collection.products | size }} items)</span>
+                            {% if collection.description != blank %}
+                                <div class="sub-collection__text-description">{{ collection.description }}</div>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="sub-collection__button">                
+                        <a href="{{ collection.url }}">shop all</a>
+                    </div>
+                </div>
+                <div class="collection-template__sub-collection__image">
+                    <ul class="sub-collection__image-wrapper">
+                        {% for product in collection.products limit: 3 %}
+                            <li>
+                                <a href="{{ product.url }}">
+                                    <img src="{{ product.featured_image | img_url: "master" }}" alt="image" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <hr class="grey-dooted-hr"> 
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+    const swiper1 = new Swiper('.swiper-container', {
+        slidesPerView: 5,
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 7,
+        },
+        },
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "collection template",
+        "class": "collection-template",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+            },
+            {
+                "type": "url",
+                "id": "new_product_link",
+                "label": "Link for new ones"
+            },
+            {
+                "type": "text",
+                "id": "new_product_link_text",
+                "label": "Text for new product link",
+                "default": "What's New"
+            },
+            {
+                "type": "url",
+                "id": "all_product_linnk",
+                "label": "Link for all products"
+            },
+            {
+                "type": "text",
+                "id": "all_product_link_text",
+                "label": "Text for all ones",
+                "default": "Browse All"
+            }
+        ],
+        "presets":[
+            {
+                "name": "Collection template section"
+            }
+        ]
+    }
+{% endschema %}

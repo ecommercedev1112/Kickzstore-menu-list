@@ -1,0 +1,206 @@
+.HeaderMegamenu {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: white;
+}
+
+.header-megamenu {
+    padding: 55px;
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 100vw;
+}
+.header-megamenu.header-megamenu-sticky {
+    position: fixed;
+}
+.header-megamenu--submenu {
+    width: 40%;
+    display: flex;
+}
+
+.header-megamenu--submenu-link_list {
+    width: 50%;
+}
+
+.header-megamenu--submenu_title {
+    font-family: 'FoundersGrotesk-Medium';
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header-megamenu--submenu-list {
+    margin: 0;
+    padding: 25px 0;
+    list-style: none;
+}
+
+.header-megamenu--submenu_link a {
+    font-family: 'TestFoundersGrotesk-Regular';
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: left;
+    color: #111;
+    text-decoration: none;
+}
+
+.header-megamenu--featured-promotion {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.header-megamenu--featured-promotion_item {
+    width: 30%;
+    max-width: 358px;
+    text-align: center;
+}
+
+.header-megamenu--featured-promotion_image {
+    margin-bottom: 30px;
+}
+
+.header-megamenu--featured-promotion_image img {
+    width: 100%;
+    height: auto;
+}
+
+.header__inline-menu details[data-submenu="true"] > .header__submenu {
+    display: none;
+}
+
+details[open] > .header__menu-item {
+    text-decoration: none;
+}
+
+.header-megamenu {
+    display: none;
+}
+
+.header-megamenu.active {
+    display: flex;
+}
+.header__left-icons {
+    width: max-content;
+}
+@media (max-width: 1350px) {
+    .header__icon .header-icon-text {
+        display: none;
+    }
+}
+.announcement-bar::after {
+    content: '';
+}
+@media (max-width: 990px) {
+    .header-megamenu.active, .header__left-icons {
+        display: none;
+    }
+    .header--icon {
+        margin: 0 3px;
+    }
+    .announcement-bar::after {
+        content: 'flickity';
+        display: none;
+    }
+    .header__heading {
+        width: 120px;
+    }
+}
+.menu-drawer__inner-submenu .menu-drawer__megamenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu,
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--featured-promotion {
+    width: 100%;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu .header-megamenu--submenu-link_list {
+    width: 100%;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu .header-megamenu--submenu-link_list .header-megamenu--submenu_title {
+    font-family: 'TestFoundersGrotesk-Regular';
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-align: left;
+    color: #000;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu .header-megamenu--submenu-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--submenu .header-megamenu--submenu-list .header-megamenu--submenu_link a {
+    font-family: 'TestFoundersGrotesk-Regular';
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #111;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--featured-promotion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--featured-promotion .header-megamenu--featured-promotion_item {
+    width: 100%;
+    max-width: 207px;
+    text-align: left;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--featured-promotion .header-megamenu--featured-promotion_item .header-megamenu--featured-promotion_image {
+    margin-bottom: 0;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__megamenu .header-megamenu--featured-promotion .header-megamenu--featured-promotion_item .btn {
+    font-family: 'TestFoundersGrotesk-Regular';
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-align: center;
+    color: #000;
+    margin: 13px 0 20px -7px;
+    text-align: left;
+}
